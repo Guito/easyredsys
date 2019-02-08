@@ -107,6 +107,20 @@ public abstract class Notification {
         apiMacSha256.setParameter("Ds_MerchantCode", ds_MerchantCode);
     }
 
+    @XmlElement(name = "Ds_Merchant_Identifier")
+    public String getDs_Merchant_Identifier() {
+        String ds_Merchant_Identifier = "";
+        try {
+            ds_Merchant_Identifier = apiMacSha256.getParameter("Ds_Merchant_Identifier");
+        } catch (JSONException e) {
+        }
+        return ds_Merchant_Identifier;
+    }
+
+    public void setDs_Merchant_Identifier(String ds_Merchant_Identifier) {
+        apiMacSha256.setParameter("Ds_Merchant_Identifier", ds_Merchant_Identifier);
+    }
+
     @XmlElement(name = "Ds_MerchantData")
     public String getDs_MerchantData() {
         String ds_MerchantData = "";
@@ -233,6 +247,19 @@ public abstract class Notification {
     }
     */
 
+    @XmlElement(name="Ds_Card_Brand")
+    public String getDs_Card_Brand() {
+        String ds_Card_Brand = "";
+        try {
+            ds_Card_Brand = apiMacSha256.getParameter("Ds_Card_Brand");
+        } catch (JSONException e) {}
+        return ds_Card_Brand;
+    }
+
+    public void setDs_Card_Brand(String ds_Card_Brand) {
+        apiMacSha256.setParameter("Ds_Card_Brand", ds_Card_Brand);
+    }
+
     @XmlElement(name="Ds_Card_Country")
     public String getDs_Card_Country() {
         String ds_Card_Country = "";
@@ -339,6 +366,9 @@ public abstract class Notification {
         sb.append(getDs_Card_Country());
         if (getDs_Card_Country() != null && !getDs_Card_Country().isEmpty())
             sb.append(" (" + Country.getByCode(Integer.valueOf(getDs_Card_Country())) +")");
+        sb.append(System.lineSeparator());
+        sb.append("Ds_Card_Brand:");
+        sb.append(getDs_Card_Brand());
         sb.append(System.lineSeparator());
         sb.append("Ds_Card_Type:");
         sb.append(getDs_Card_Type());
