@@ -22,7 +22,7 @@ public enum CardBrand {
 
     public static CardBrand getCard(Integer code) {
         if (code == null) {
-            return UNKNOWN;
+            return null;
         }
         return Arrays.stream(values()).filter(cb -> code.equals(cb.code)).findFirst().orElse(UNKNOWN);
     }
