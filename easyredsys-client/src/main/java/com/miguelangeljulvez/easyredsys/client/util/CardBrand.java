@@ -27,8 +27,4 @@ public enum CardBrand {
         return Arrays.stream(values()).filter(cb -> code.equals(cb.code)).findFirst().orElse(UNKNOWN);
     }
 
-    @Override
-    public String toString() {
-        return code.toString();
-    }
 }
