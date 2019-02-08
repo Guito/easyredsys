@@ -121,6 +121,20 @@ public abstract class Notification {
         apiMacSha256.setParameter("Ds_Merchant_Identifier", ds_Merchant_Identifier);
     }
 
+    @XmlElement(name = "Ds_ExpiryDate")
+    public String getDs_ExpiryDate() {
+        String ds_Ds_ExpiryDate = "";
+        try {
+            ds_Ds_ExpiryDate = apiMacSha256.getParameter("Ds_ExpiryDate");
+        } catch (JSONException e) {
+        }
+        return ds_Ds_ExpiryDate;
+    }
+
+    public void setDs_ExpiryDate(String ds_Ds_ExpiryDate) {
+        apiMacSha256.setParameter("Ds_ExpiryDate", ds_Ds_ExpiryDate);
+    }
+
     @XmlElement(name = "Ds_MerchantData")
     public String getDs_MerchantData() {
         String ds_MerchantData = "";
@@ -334,6 +348,12 @@ public abstract class Notification {
         sb.append(System.lineSeparator());
         sb.append("Ds_MerchantCode:");
         sb.append(getDs_MerchantCode());
+        sb.append(System.lineSeparator());
+        sb.append("Ds_Merchant_Identifier:");
+        sb.append(getDs_Merchant_Identifier());
+        sb.append(System.lineSeparator());
+        sb.append("Ds_ExpiryDate:");
+        sb.append(getDs_ExpiryDate());
         sb.append(System.lineSeparator());
         sb.append("Ds_MerchantData:");
         sb.append(getDs_MerchantData());
