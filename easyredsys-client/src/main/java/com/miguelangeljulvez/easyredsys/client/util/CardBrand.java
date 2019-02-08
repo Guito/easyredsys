@@ -20,7 +20,7 @@ public enum CardBrand {
         this.code = code;
     }
 
-    static CardBrand getCard(Integer code) {
+    public static CardBrand getCard(Integer code) {
         if (code == null) {
             return UNKNOWN;
         }
