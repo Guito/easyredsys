@@ -137,6 +137,15 @@ public abstract class Order {
         apiMacSha256.setParameter("DS_MERCHANT_IDENTIFIER", ds_merchant_identifier);
     }
 
+    @XmlElement(name = "DS_MERCHANT_GROUP")
+    public String getDs_merchant_group() {
+        return apiMacSha256.getParameter("DS_MERCHANT_GROUP");
+    }
+
+    public void setDs_merchant_group(String ds_merchant_group) {
+        apiMacSha256.setParameter("DS_MERCHANT_GROUP", ds_merchant_group);
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -170,6 +179,9 @@ public abstract class Order {
         sb.append(System.lineSeparator());
         sb.append("DS_MERCHANT_IDENTIFIER:");
         sb.append(getDs_merchant_identifier());
+        sb.append(System.lineSeparator());
+        sb.append("DS_MERCHANT_GROUP:");
+        sb.append(getDs_merchant_group());
         sb.append(System.lineSeparator());
 
         return sb.toString();
