@@ -146,6 +146,15 @@ public abstract class Order {
         apiMacSha256.setParameter("DS_MERCHANT_GROUP", ds_merchant_group);
     }
 
+    @XmlElement(name = "DS_MERCHANT_DIRECTPAYMENT")
+    public String getDs_merchant_directpayment() {
+        return apiMacSha256.getParameter("DS_MERCHANT_DIRECTPAYMENT");
+    }
+
+    public void setDs_merchant_directpayment(boolean ds_merchant_directpayment) {
+        apiMacSha256.setParameter("DS_MERCHANT_DIRECTPAYMENT", ds_merchant_directpayment ? "true" : "false");
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -182,6 +191,9 @@ public abstract class Order {
         sb.append(System.lineSeparator());
         sb.append("DS_MERCHANT_GROUP:");
         sb.append(getDs_merchant_group());
+        sb.append(System.lineSeparator());
+        sb.append("DS_MERCHANT_DIRECTPAYMENT:");
+        sb.append(getDs_merchant_identifier());
         sb.append(System.lineSeparator());
 
         return sb.toString();
