@@ -1,5 +1,6 @@
 package com.miguelangeljulvez.easyredsys.client.core;
 
+import com.miguelangeljulvez.easyredsys.client.util.CofType;
 import sis.redsys.api.ApiMacSha256;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -155,6 +156,42 @@ public abstract class Order {
         apiMacSha256.setParameter("DS_MERCHANT_DIRECTPAYMENT", ds_merchant_directpayment ? "true" : "false");
     }
 
+    @XmlElement(name = "DS_MERCHANT_COF_INI")
+    public String getDs_merchant_cof_ini() {
+        return apiMacSha256.getParameter("DS_MERCHANT_COF_INI");
+    }
+
+    public void setDs_merchant_cof_ini(boolean ds_merchant_cof_ini) {
+        apiMacSha256.setParameter("DS_MERCHANT_COF_INI", ds_merchant_cof_ini ? "S" : "N");
+    }
+
+    @XmlElement(name = "DS_MERCHANT_COF_TYPE")
+    public String getDs_merchant_cof_type() {
+        return apiMacSha256.getParameter("DS_MERCHANT_COF_TYPE");
+    }
+
+    public void setDs_merchant_cof_type(CofType ds_merchant_cof_type) {
+        apiMacSha256.setParameter("DS_MERCHANT_COF_TYPE", ds_merchant_cof_type == null ? "" : ds_merchant_cof_type.getCode());
+    }
+
+    @XmlElement(name = "DS_MERCHANT_COF_TXNID")
+    public String getDs_merchant_cof_txnid() {
+        return apiMacSha256.getParameter("DS_MERCHANT_COF_TXNID");
+    }
+
+    public void setDs_merchant_cof_txnid(String ds_merchant_cof_txnid) {
+        apiMacSha256.setParameter("DS_MERCHANT_COF_TXNID", ds_merchant_cof_txnid);
+    }
+
+    @XmlElement(name = "DS_MERCHANT_EXCEP_SCA")
+    public String getDs_merchant_excep_sca() {
+        return apiMacSha256.getParameter("DS_MERCHANT_EXCEP_SCA");
+    }
+
+    public void setDs_merchant_excep_sca(String ds_merchant_excep_sca) {
+        apiMacSha256.setParameter("DS_MERCHANT_EXCEP_SCA", ds_merchant_excep_sca);
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -193,7 +230,19 @@ public abstract class Order {
         sb.append(getDs_merchant_group());
         sb.append(System.lineSeparator());
         sb.append("DS_MERCHANT_DIRECTPAYMENT:");
-        sb.append(getDs_merchant_identifier());
+        sb.append(getDs_merchant_directpayment());
+        sb.append(System.lineSeparator());
+        sb.append("DS_MERCHANT_COF_INI:");
+        sb.append(getDs_merchant_cof_ini());
+        sb.append(System.lineSeparator());
+        sb.append("DS_MERCHANT_COF_TYPE:");
+        sb.append(getDs_merchant_cof_type());
+        sb.append(System.lineSeparator());
+        sb.append("DS_MERCHANT_COF_TXNID:");
+        sb.append(getDs_merchant_cof_txnid());
+        sb.append(System.lineSeparator());
+        sb.append("DS_MERCHANT_EXCEP_SCA:");
+        sb.append(getDs_merchant_excep_sca());
         sb.append(System.lineSeparator());
 
         return sb.toString();
@@ -203,9 +252,9 @@ public abstract class Order {
     public boolean equals(Object object) {
         boolean isEquals = false;
         if (object instanceof Order) {
-            Order order = (Order)object;
+            Order order = (Order) object;
 
-            if (order.getDs_merchant_order() !=null && order.getDs_merchant_order().equals(this.getDs_merchant_order())) {
+            if (order.getDs_merchant_order() != null && order.getDs_merchant_order().equals(this.getDs_merchant_order())) {
                 isEquals = true;
             }
         }
