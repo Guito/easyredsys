@@ -300,6 +300,19 @@ public abstract class Notification {
         apiMacSha256.setParameter("Ds_Card_Type", ds_Card_Type);
     }
 
+    @XmlElement(name="Ds_Merchant_Cof_Txnid")
+    public String getDs_Merchant_Cof_Txnid() {
+        String ds_Merchant_Cof_Txnid = "";
+        try {
+            ds_Merchant_Cof_Txnid = apiMacSha256.getParameter("Ds_Merchant_Cof_Txnid");
+        } catch (JSONException e) {}
+        return ds_Merchant_Cof_Txnid;
+    }
+
+    public void setDs_Merchant_Cof_Txnid(String ds_Merchant_Cof_Txnid) {
+        apiMacSha256.setParameter("Ds_Merchant_Cof_Txnid", ds_Merchant_Cof_Txnid);
+    }
+
     @XmlElement(name = "epochTime")
     public long getEpochTime() {
 
@@ -392,6 +405,9 @@ public abstract class Notification {
         sb.append(System.lineSeparator());
         sb.append("Ds_Card_Type:");
         sb.append(getDs_Card_Type());
+        sb.append(System.lineSeparator());
+        sb.append("Ds_Merchant_Cof_Txnid:");
+        sb.append(getDs_Merchant_Cof_Txnid());
         sb.append(System.lineSeparator());
 
         return sb.toString();
